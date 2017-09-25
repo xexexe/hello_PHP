@@ -1,3 +1,3 @@
 <?php
-echo "hehehe";
+echo "hello world";
 ?>

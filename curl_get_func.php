@@ -7,12 +7,14 @@ function doCurlGetRequest($url,$data = [],$timeout = 5){
  	return false;
  }
  $url = $url.'?'.http_build_query($data);
- $con = curl_init((string)$url);
- curl_setopt($con, CURLOPT_HEADER, false);
- curl_setopt($con, CURLOPT_RETURNTRANSFER,true);
- curl_setopt($con, CURLOPT_TIMEOUT, (int)$timeout);
+ $ch = curl_init((string)$url);
+ curl_setopt($ch, CURLOPT_HEADER, false);
+ curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+ curl_setopt($ch, CURLOPT_TIMEOUT, (int)$timeout);
  
- return curl_exec($con);
+ $data =  curl_exec($ch);
+ curl_close($ch);
+ return $data;
 }
-echo doCurlGetRequest('http://www.baidu.com');
+echo doCurlGetRequest('http://localhost/php/hello_world.php');
 ?>

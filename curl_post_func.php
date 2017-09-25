@@ -6,13 +6,15 @@ function doCurlPostRequest($url,$requestString,$timeout = 5){
  if($url == '' || $requestString == '' || $timeout <=0){
  	return false;
  }
- $con = curl_init((string)$url);
- curl_setopt($con, CURLOPT_HEADER, false);
- curl_setopt($con, CURLOPT_POSTFIELDS, $requestString);
- curl_setopt($con, CURLOPT_POST,true);
- curl_setopt($con, CURLOPT_RETURNTRANSFER,true);
- curl_setopt($con, CURLOPT_TIMEOUT,(int)$timeout);
- return curl_exec($con); 
+ $ch = curl_init((string)$url);
+ curl_setopt($ch, CURLOPT_HEADER, false);
+ curl_setopt($ch, CURLOPT_POSTFIELDS, $requestString);
+ curl_setopt($ch, CURLOPT_POST,true);
+ curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+ curl_setopt($ch, CURLOPT_TIMEOUT,(int)$timeout);
+ $data = curl_exec($ch); 
+ curl_close($ch);
+ return $data;
 }
-echo doCurlPostRequest('http://www.baidu.com',"{'hehe':'ooo'}");
+echo doCurlPostRequest('http://localhost/php/post_data.php',"{'hehe':'ooo'}");
 ?>
