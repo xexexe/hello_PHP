@@ -4,3 +4,9 @@ Change Log
 1.create respository，add hello world.
 2.add curl get test.
 3.add curl get function test.
+
+2017-09-25 11:54:47
+1.add practise file foder for php
+2.add hello world in practise
+3.add var in practise
+4.add datatypes in practise. string, integer, float, boolean, array, object, null
